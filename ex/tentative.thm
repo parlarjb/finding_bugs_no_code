@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" fontsize="22">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+</node>
+
+<node shape="Box" color="Blue">
+   <type name="User"/>
+</node>
+
+<node shape="Ellipse" color="Yellow">
+   <type name="Account"/>
+</node>
+
+<node shape="Parallelogram" color="Green">
+   <type name="Resource"/>
+</node>
+
+<node style="Bold" label="child">
+   <set name="$parent_implies_child_child" type="Resource"/>
+</node>
+
+<node style="Bold" label="r">
+   <set name="$parent_implies_child_r" type="Resource"/>
+</node>
+
+<node style="Bold" label="u">
+   <set name="$parent_implies_child_u" type="User"/>
+</node>
+
+<edge layout="yes">
+   <relation name="parent"> <type name="Resource"/> <type name="Resource"/> </relation>
+</edge>
+
+</view>
+
+</alloy>
