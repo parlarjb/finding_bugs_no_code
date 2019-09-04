@@ -8,7 +8,7 @@ sig Account {
 
 sig User {
   // Every User has direct access to 0 or more Users
-  canAccess: set Resource
+  resources: set Resource
 }
 
 sig Resource {
@@ -33,7 +33,7 @@ fact "No cycles" {
 
 
 pred can_access(u: User, r: Resource) {	
-       r in u.canAccess or (some r.parent and r.parent in u.canAccess)
+       r in u.resources or (some r.parent and r.parent in u.resources)
 }
 
 fact "only permit resources in same account" {

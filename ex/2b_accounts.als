@@ -8,7 +8,7 @@ sig Account {
 
 sig User {
   // Every User has direct access to 0 or more Users
-  canAccess: set Resource
+  resources: set Resource
 }
 
 sig Resource {

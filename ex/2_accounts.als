@@ -8,7 +8,7 @@ sig Account {
 
 sig User {
   // Every User has direct access to 0 or more Users
-  canAccess: set Resource
+  resources: set Resource
 }
 
 sig Resource {
@@ -18,7 +18,6 @@ sig Resource {
 
 fact "no shared users" {
   all u: User | one a: Account | u in a.users
-
 }
 
 run {} for 2 but exactly 2 Account
