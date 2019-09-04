@@ -31,15 +31,9 @@ fact "No cycles" {
 	r in r.^parent
 }
 
-
-pred can_access(u: User, r: Resource) {	
-       r in u.resources or (some r.parent and r.parent in u.resources)
-}
-
 fact "only permit resources in same account" {
-  all u: User, r: Resource |
-	can_access[u, r] implies one a: Account |  
-		u in a.users and r in a.resources
+  all u: User, a: Account, r: a.resources | 
+ 	r in u.resources implies u in a.users
 }
 
 
@@ -51,6 +45,12 @@ fact "every resource has an account" {
 
 check NoSharedResources {
   all r: Resource | one a: Account | r in a.resources
+}
+
+// A user can access all resources they have direct access
+// to, and those resources' parent resources
+pred can_access(u: User, r: Resource) {	
+       r in u.resources or (some r.parent and r.parent in u.resources)
 }
 
 //if you can access the parent, you can access all its children
