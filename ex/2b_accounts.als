@@ -18,7 +18,6 @@ sig Resource {
 
 fact "no shared users" {
   all u: User | one a: Account | u in a.users
-
 }
 
 fact "parent resource in same account" {

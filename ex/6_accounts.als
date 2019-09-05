@@ -32,8 +32,10 @@ fact "No cycles" {
 }
 
 fact "only permit resources in same account" {
-  all u: User, a: Account, r: a.resources | 
- 	r in u.resources implies u in a.users
+  all r: Resource | one a: Account | r in a.resources
+
+  all u: User, a: Account | 
+        u in a.users implies u.resources in a.resources
 }
 
 
