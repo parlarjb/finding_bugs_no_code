@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" fontsize="24">
+
+<projection> <type name="Time"/> </projection>
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="Time"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <set name="$NoIntruder_t1" type="Time"/>
+</node>
+
+<node shape="Box" color="Blue">
+   <type name="Guest"/>
+</node>
+
+<node shape="Ellipse" color="Yellow">
+   <type name="Card"/>
+</node>
+
+<node shape="Inv Triangle" color="Red">
+   <type name="Key"/>
+</node>
+
+<node shape="Lined Diamond" color="Gray">
+   <type name="Room"/>
+</node>
+
+<node shape="Parallelogram" color="Green">
+   <type name="Desk"/>
+</node>
+
+<node style="Bold">
+   <set name="First" type="timeOrder/Ord"/>
+   <set name="Next" type="timeOrder/Ord"/>
+</node>
+
+<node style="Bold" label="c">
+   <set name="$enter_c" type="Card"/>
+</node>
+
+<node style="Bold" label="c&apos;">
+   <set name="$enter_c&apos;" type="Card"/>
+</node>
+
+<node style="Bold" label="c&apos;&apos;">
+   <set name="$enter_c&apos;&apos;" type="Card"/>
+</node>
+
+<node style="Bold" label="g">
+   <set name="$NoIntruder_g" type="Guest"/>
+</node>
+
+<node style="Bold" label="g1">
+   <set name="$NoIntruder_g1" type="Guest"/>
+</node>
+
+<node style="Bold" label="g2">
+   <set name="$NoIntruder_g2" type="Guest"/>
+</node>
+
+<node style="Bold" label="r">
+   <set name="$NoIntruder_r" type="Room"/>
+</node>
+
+<node style="Bold" label="r&apos;">
+   <set name="$NoIntruder_r&apos;" type="Room"/>
+</node>
+
+<node visible="no">
+   <type name="timeOrder/Ord"/>
+</node>
+
+<edge color="Gray" constraint="no">
+   <relation name="prev"> <type name="Desk"/> <type name="Room"/> <type name="Key"/> </relation>
+</edge>
+
+</view>
+
+</alloy>

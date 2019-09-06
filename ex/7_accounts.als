@@ -42,7 +42,7 @@ fact "only permit resources in same account" {
 run {} for 2 but exactly 2 Account
 
 fact "every resource has an account" {
-   all r: Resource | one a: Account | r in a.resources
+   Account.resources = Resource
 }
 
 check NoSharedResources {
@@ -56,7 +56,7 @@ pred can_access(u: User, r: Resource) {
        r in u.resources or (some r.parent and r.parent in u.resources)
 }
 
-//if you can access the parent, you can access all its children
+//if you can access the parent, you can access its chain of children
 check parent_implies_child {
 	all u: User, r: Resource |
 		can_access[u, r] implies 
