@@ -17,7 +17,12 @@ sig Resource {
 }
 
 fact "no shared users" {
-  all u: User | one a: Account | u in a.users
+  // For each User `u`
+  all u: User | 
+        // there is exactly one Account `a`
+	one a: Account | 
+		// in which `u` belongs to `a`
+		u in a.users
 }
 
 run {} for 2 but exactly 2 Account

@@ -17,22 +17,37 @@ sig Resource {
 }
 
 fact "no shared users" {
-  all u: User | one a: Account | u in a.users
+  // For each User `u`
+  all u: User | 
+        // there is exactly one Account `a`
+	one a: Account | 
+		// in which `u` belongs to `a`
+		u in a.users
 }
 
 fact "parent resource in same account" {
+  // For each Resource r
   all r: Resource | 
+        // if r has a parent it implies that
 	some r.parent implies
-		 (one a: Account | r in a.resources and r.parent in a.resources)
+                 // there is exactly one Account `a` 
+		 (one a: Account | 
+			// for which `r` and `r.parent` both belong to `a`
+			r in a.resources and r.parent in a.resources)
 }
 
 fact "No cycles" {
+  // there is no Resource `r` for which
   no r: Resource |
+	// `r` is in its own parent chain
 	r in r.^parent
 }
 
-fact "only permit resources in same account" {
+fact "only permit owning resources in same account" {
+  // for every combination of User `u` and Account `a`
   all u: User, a: Account | 
+	// if `u` belongs to `a` it implies all of the Resources that `u`
+	// has access to belong to `a`
         u in a.users implies u.resources in a.resources
 }
 
