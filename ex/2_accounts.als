@@ -21,7 +21,7 @@ fact "no shared users" {
   all u: User | 
         // there is exactly one Account `a`
 	one a: Account | 
-		// in which `u` belongs to `a`
+		// for which `u` belongs to `a`
 		u in a.users
 }
 
