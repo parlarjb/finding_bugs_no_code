@@ -46,8 +46,9 @@ fact "No cycles" {
 fact "only permit owning resources in same account" {
   // for every combination of User `u` and Account `a`
   all u: User, a: Account | 
-	// if `u` belongs to `a` it implies all of the Resources that `u`
-	// has access to belong to `a`
+	// if `u` belongs to `a` it implies 
+       // all of the Resources that `u` has access to 
+       // belong to `a`
         u in a.users implies u.resources in a.resources
 }
 

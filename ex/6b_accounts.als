@@ -61,7 +61,8 @@ fact "every resource has an account" {
 
    // there is no combination of two Accounts `a1` and `a2` such that
   no disj a1, a2: Account |
-	// `a1` and `a2` both own at least one of the same Resource
+	// for which `a1` and `a2` both own 
+       // at least one of the same Resource
 	// (i.e. no intersection between their Resources)
 	some a1.resources & a2.resources
 }

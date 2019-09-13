@@ -32,7 +32,8 @@ fact "parent resource in same account" {
 	some r.parent implies
                  // there is exactly one Account `a` 
 		 (one a: Account | 
-			// for which `r` and `r.parent` both belong to `a`
+			// for which `r` and `r.parent` both 
+                      // belong to `a`
 			r in a.resources and r.parent in a.resources)
 }
 

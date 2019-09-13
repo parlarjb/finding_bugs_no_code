@@ -32,7 +32,8 @@ fact "parent resource in same account" {
 	some r.parent implies
                  // there is exactly one Account `a` 
 		 (one a: Account | 
-			// for which `r` and `r.parent` both belong to `a`
+			// for which `r` and `r.parent` both 
+                      // belong to `a`
 			r in a.resources and r.parent in a.resources)
 }
 
@@ -46,8 +47,9 @@ fact "No cycles" {
 fact "only permit owning resources in same account" {
   // for every combination of User `u` and Account `a`
   all u: User, a: Account | 
-	// if `u` belongs to `a` it implies all of the Resources that `u`
-	// has access to belong to `a`
+	// if `u` belongs to `a` it implies 
+       // all of the Resources that `u` has access to 
+       // belong to `a`
         u in a.users implies u.resources in a.resources
 }
 
